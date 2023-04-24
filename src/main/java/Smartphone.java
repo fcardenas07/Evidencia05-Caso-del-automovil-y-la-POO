@@ -1,22 +1,23 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Smarthphone {
+public class Smartphone {
     private String dueño;
     private String marca;
     private String modelo;
     private int numeroCelular;
-    private List<String> AppsInstaladas;
+    private ArrayList<String> AppsInstaladas;
     private Map<String, Integer> contactos;
 
 
-    public Smarthphone(String dueño, String marca, String modelo, int numeroCelular) {
+    public Smartphone(String dueño, String marca, String modelo, int numeroCelular) {
         this.dueño = dueño;
         this.marca = marca;
         this.modelo = modelo;
         this.numeroCelular = numeroCelular;
-        this.AppsInstaladas = List.of("Fb", "Google", "Agenda", "Teléfono", "Web Browser");
+        this.AppsInstaladas = new ArrayList<>(List.of("Fb", "Google", "Agenda", "Teléfono", "Web Browser"));
         this.contactos = new HashMap<>();
     }
 
@@ -64,7 +65,6 @@ public class Smarthphone {
         System.out.println("Se ha desinstalado " + app);
     }
 
-
     public void llamarContacto(String nombreContaco) {
         if (contactoNoExiste(nombreContaco)) {
             System.out.println("No existe el contacto " + nombreContaco);
@@ -81,20 +81,16 @@ public class Smarthphone {
         this.dueño = nuevoDueño;
     }
 
-    public void verDueño() {
+    public void cambiarNumero(int nuevoNumero) {
+        this.numeroCelular = nuevoNumero;
+    }
+
+    public void verDatosSmartphone() {
+        System.out.println("Datos Smartphone");
         System.out.println(dueño);
-    }
-
-    public void verMarca() {
-        System.out.println(marca);
-    }
-
-    public void verModelo() {
-        System.out.println(modelo);
-    }
-
-    public void verNumeroCelular() {
         System.out.println(numeroCelular);
+        System.out.println(marca);
+        System.out.println(modelo);
     }
 
     public void verAppsInstaladas() {
@@ -102,6 +98,10 @@ public class Smarthphone {
     }
 
     public void verContactos() {
-        System.out.println(contactos.toString());
+        if (contactos.isEmpty()) {
+            System.out.println("No hay contactos");
+            return;
+        }
+        System.out.println(contactos);
     }
 }
