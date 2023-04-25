@@ -42,7 +42,7 @@ public class Smartphone {
     }
 
     public void borrarContacto(String nombre) {
-        if (contactoNoExiste(nombre)) {
+        if (!contactoExiste(nombre)) {
             System.out.println("El contacto " + nombre + " no está registrado");
             return;
         }
@@ -69,15 +69,11 @@ public class Smartphone {
     }
 
     public void llamarContacto(String nombreContaco) {
-        if (contactoNoExiste(nombreContaco)) {
+        if (!contactoExiste(nombreContaco)) {
             System.out.println("No existe el contacto " + nombreContaco);
             return;
         }
         System.out.println("Llamando a " + nombreContaco + " .......");
-    }
-
-    private boolean contactoNoExiste(String nombreContaco) {
-        return !this.contactos.containsKey(nombreContaco);
     }
 
     public void cambiarDueño(String nuevoDueño) {
