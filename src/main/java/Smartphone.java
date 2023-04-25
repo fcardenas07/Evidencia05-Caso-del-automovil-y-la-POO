@@ -8,17 +8,20 @@ public class Smartphone {
     private String marca;
     private String modelo;
     private int numeroCelular;
-    private ArrayList<String> AppsInstaladas;
+    private ArrayList<String> appsInstaladas;
     private Map<String, Integer> contactos;
-
 
     public Smartphone(String dueño, String marca, String modelo, int numeroCelular) {
         this.dueño = dueño;
         this.marca = marca;
         this.modelo = modelo;
         this.numeroCelular = numeroCelular;
-        this.AppsInstaladas = new ArrayList<>(List.of("Fb", "Google", "Agenda", "Teléfono", "Web Browser"));
+        this.appsInstaladas = appsDeFabrica();
         this.contactos = new HashMap<>();
+    }
+
+    private ArrayList<String> appsDeFabrica() {
+        return new ArrayList<>(List.of("Fb", "Google", "Agenda", "Teléfono", "Web Browser"));
     }
 
     public void llamar(int numero) {
@@ -48,20 +51,20 @@ public class Smartphone {
     }
 
     public void instalarApp(String nuevaApp) {
-        if (AppsInstaladas.contains(nuevaApp)) {
+        if (appsInstaladas.contains(nuevaApp)) {
             System.out.println("La App " + nuevaApp + " ya está instalada");
             return;
         }
-        AppsInstaladas.add(nuevaApp);
+        appsInstaladas.add(nuevaApp);
         System.out.println("Se ha instalado " + nuevaApp);
     }
 
     public void desinstalarApp(String app) {
-        if (!AppsInstaladas.contains(app)) {
+        if (!appsInstaladas.contains(app)) {
             System.out.println("La App " + app + " no está instalada");
             return;
         }
-        AppsInstaladas.remove(app);
+        appsInstaladas.remove(app);
         System.out.println("Se ha desinstalado " + app);
     }
 
@@ -94,7 +97,7 @@ public class Smartphone {
     }
 
     public void verAppsInstaladas() {
-        System.out.println(AppsInstaladas);
+        System.out.println(appsInstaladas);
     }
 
     public void verContactos() {
